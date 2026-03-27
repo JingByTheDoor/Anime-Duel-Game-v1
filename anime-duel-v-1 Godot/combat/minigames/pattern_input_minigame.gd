@@ -4,7 +4,7 @@ extends MiniGameBase
 var _sequence: PackedStringArray = []
 var _input_index := 0
 var _errors := 0
-var _time_limit := 1.6
+var _time_limit := 2.3
 var _elapsed := 0.0
 
 func begin(mini_game_data: MiniGameData, run_context: Dictionary) -> void:
@@ -12,7 +12,7 @@ func begin(mini_game_data: MiniGameData, run_context: Dictionary) -> void:
 	_sequence.clear()
 	_input_index = 0
 	_errors = 0
-	_time_limit = 1.6
+	_time_limit = 2.3
 	_elapsed = 0.0
 	if DebugConfig.forced_grade >= 0:
 		return
@@ -27,7 +27,7 @@ func begin(mini_game_data: MiniGameData, run_context: Dictionary) -> void:
 			key_index = rng.randi_range(0, mini_game_data.sequence_keys.size() - 1)
 		_sequence.append(mini_game_data.sequence_keys[key_index])
 
-	_time_limit = float(mini_game_data.pattern_time_limits.get(length, 1.6))
+	_time_limit = float(mini_game_data.pattern_time_limits.get(length, 2.3))
 	$Panel/VBox/Sequence.text = " ".join(_sequence)
 	$Panel/VBox/Status.text = "Input the sequence"
 	_update_progress()

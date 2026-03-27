@@ -2,19 +2,18 @@ class_name ReactionTimingMiniGame
 extends MiniGameBase
 
 var _elapsed := 0.0
-var _duration := 1.6
+var _duration := 1.8
 var _resolved := false
 
 func begin(mini_game_data: MiniGameData, run_context: Dictionary) -> void:
 	super.begin(mini_game_data, run_context)
 	_elapsed = 0.0
-	_duration = 1.6
+	_duration = mini_game_data.timing_duration
 	_resolved = false
 	if DebugConfig.forced_grade >= 0:
 		return
-	_duration = 1.3
 	if run_context.get("heavy", false):
-		_duration = 1.55
+		_duration = mini_game_data.timing_heavy_duration
 	$Panel/VBox/Status.text = "Press ENTER when the marker is centered."
 	set_process(true)
 
