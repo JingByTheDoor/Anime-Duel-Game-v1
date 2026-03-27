@@ -264,11 +264,27 @@ func _run_exchange() -> void:
 		_begin_planning()
 
 func _play_player_minigame(minigame_type: int) -> MiniGameResult:
+	var data: MiniGameData = _get_minigame_data(minigame_type)
+	mini_game_router.begin_minigame(data, {"rng": rng, "heavy": int(player_choice.get("subtype", DuelTypes.AttackSubtype.NONE)) == DuelTypes.AttackSubtype.POWER}, false)
+	await _run_minigame_prep_delay(minigame_type)
 	current_state = DuelTypes.CombatState.MINI_GAME_ACTIVE
-	var data := _get_minigame_data(minigame_type)
-	mini_game_router.begin_minigame(data, {"rng": rng, "heavy": int(player_choice.get("subtype", DuelTypes.AttackSubtype.NONE)) == DuelTypes.AttackSubtype.POWER})
+	mini_game_router.set_active_minigame_interaction(true)
 	var result: MiniGameResult = await mini_game_router.mini_game_completed
 	return result
+
+func _run_minigame_prep_delay(minigame_type: int) -> void:
+	var prep_delay: float = balance_data.minigame_prep_delay
+	if prep_delay <= 0.0:
+		return
+	combat_hud.show_explanation("Prepare: %s. Input opens when the countdown ends." % DuelTypes.minigame_to_text(minigame_type))
+	var remaining: float = prep_delay
+	while remaining > 0.0:
+		combat_hud.set_turn_timer(remaining)
+		var tick: float = 0.05 if remaining > 0.05 else remaining
+		await get_tree().create_timer(tick).timeout
+		remaining -= tick
+	combat_hud.set_turn_timer(0.0)
+	combat_hud.show_explanation("")
 
 func _get_minigame_data(minigame_type: int) -> MiniGameData:
 	match minigame_type:

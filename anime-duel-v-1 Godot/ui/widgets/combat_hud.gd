@@ -2,7 +2,8 @@ class_name CombatHUD
 extends Control
 
 func set_turn_timer(value: float) -> void:
-	$TimerLabel.text = "%.1f" % value
+	var clamped_value: float = value if value > 0.0 else 0.0
+	$TimerLabel.text = "%.1f" % clamped_value
 
 func update_fighter_panels(player_state: FighterState, enemy_state: FighterState, balance_data: BalanceData) -> void:
 	_update_panel($PlayerPanel, player_state, balance_data)

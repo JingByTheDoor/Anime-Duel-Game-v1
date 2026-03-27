@@ -27,6 +27,8 @@ func begin(mini_game_data: MiniGameData, run_context: Dictionary) -> void:
 	set_process(true)
 
 func _process(delta: float) -> void:
+	if not is_interaction_enabled():
+		return
 	_elapsed += delta
 	$Panel/VBox/Timer.text = "Time %.2f / %.2f" % [_elapsed, config.typing_timeout]
 	if _elapsed >= config.typing_timeout:
@@ -34,7 +36,7 @@ func _process(delta: float) -> void:
 		_finish(DuelTypes.Grade.MISS, _count_errors(), true, 0.0, {"prompt": _prompt, "typed": _typed})
 
 func _unhandled_input(event: InputEvent) -> void:
-	if DebugConfig.forced_grade >= 0:
+	if DebugConfig.forced_grade >= 0 or not is_interaction_enabled():
 		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_BACKSPACE:

@@ -34,6 +34,8 @@ func begin(mini_game_data: MiniGameData, run_context: Dictionary) -> void:
 	set_process(true)
 
 func _process(delta: float) -> void:
+	if not is_interaction_enabled():
+		return
 	_elapsed += delta
 	_update_progress()
 	if _elapsed >= _time_limit:
@@ -45,7 +47,7 @@ func _update_progress() -> void:
 	$Panel/VBox/Progress.text = "Progress %d / %d" % [_input_index, _sequence.size()]
 
 func _unhandled_input(event: InputEvent) -> void:
-	if DebugConfig.forced_grade >= 0:
+	if DebugConfig.forced_grade >= 0 or not is_interaction_enabled():
 		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		var key_text := OS.get_keycode_string(event.keycode).to_upper()

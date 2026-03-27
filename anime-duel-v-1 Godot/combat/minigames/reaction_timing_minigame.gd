@@ -19,6 +19,8 @@ func begin(mini_game_data: MiniGameData, run_context: Dictionary) -> void:
 	set_process(true)
 
 func _process(delta: float) -> void:
+	if not is_interaction_enabled():
+		return
 	if _resolved:
 		return
 	_elapsed += delta
@@ -30,7 +32,7 @@ func _process(delta: float) -> void:
 		_finish(DuelTypes.Grade.MISS, 0, true, 0.0)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if DebugConfig.forced_grade >= 0 or _resolved:
+	if DebugConfig.forced_grade >= 0 or _resolved or not is_interaction_enabled():
 		return
 	if event.is_action_pressed("duel_confirm"):
 		_resolved = true

@@ -8,6 +8,7 @@ extends Resource
 @export var special_cost := 50
 @export var planning_time := 7.0
 @export var reveal_pause := 0.45
+@export var minigame_prep_delay := 2.0
 @export var recovery_pause := 0.6
 @export var max_exchange_damage := 32
 @export var pattern_threshold_scale_attacker := 0.95
