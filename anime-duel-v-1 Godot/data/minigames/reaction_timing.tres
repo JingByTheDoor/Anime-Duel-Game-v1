@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MiniGameData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://data/minigames/mini_game_data.gd" id="1"]
+[ext_resource type="PackedScene" path="res://combat/minigames/reaction_timing_minigame.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = "timing"
+display_name = "Reaction Timing"
+mini_game_type = 2
+scene = ExtResource("2")

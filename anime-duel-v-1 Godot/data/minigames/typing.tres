@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MiniGameData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://data/minigames/mini_game_data.gd" id="1"]
+[ext_resource type="PackedScene" path="res://combat/minigames/typing_minigame.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = "typing"
+display_name = "Typing"
+mini_game_type = 3
+scene = ExtResource("2")
+typing_prompts = PackedStringArray("dash", "parry", "steel rain", "draw cut", "counter flow", "guard break", "silent step", "blade line", "storm edge", "clean read")

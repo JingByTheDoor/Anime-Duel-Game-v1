@@ -13,3 +13,15 @@ config_version=5
 config/name="Anime-duel v1"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+run/main_scene="res://main/app_root.tscn"
+
+[autoload]
+
+DebugConfig="*res://debug/debug_config.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"

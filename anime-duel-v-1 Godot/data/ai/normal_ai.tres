@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AIConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/ai/ai_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "normal"
+display_name = "Normal"
+memory_turns = 1
+bluff_rate = 0.1
+randomness = 0.25
+miss_rate = 0.1
+weak_rate = 0.25
+good_rate = 0.5
+perfect_rate = 0.15

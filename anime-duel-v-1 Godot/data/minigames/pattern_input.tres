@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MiniGameData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://data/minigames/mini_game_data.gd" id="1"]
+[ext_resource type="PackedScene" path="res://combat/minigames/pattern_input_minigame.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = "pattern"
+display_name = "Pattern Input"
+mini_game_type = 1
+scene = ExtResource("2")
+sequence_lengths = Array[int]([3, 4, 5])

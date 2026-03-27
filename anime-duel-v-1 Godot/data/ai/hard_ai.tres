@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AIConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/ai/ai_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "hard"
+display_name = "Hard"
+memory_turns = 2
+bluff_rate = 0.18
+randomness = 0.12
+miss_rate = 0.04
+weak_rate = 0.16
+good_rate = 0.5
+perfect_rate = 0.3
+aggression_bias = 1.05
+defend_bias = 0.95
+evade_bias = 1.1
+special_bias = 1.1
+adaptiveness = 1.3

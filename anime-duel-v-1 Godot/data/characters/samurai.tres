@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/characters/character_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "samurai"
+display_name = "Samurai"
+tagline = "Lethal certainty and harsh commitment."
+accent_color = Color(0.917647, 0.341176, 0.341176, 1)
+passive_name = "Lethal Read"
+power_precision_miss_self_risk_scale = 1.1
+power_perfect_bonus_guard = 2
+precision_perfect_bonus_hp = 4
+special_name = "Decisive Cut"
+special_condition_type = "opponent_guard_lte"
+special_condition_threshold = 35
+special_minigame_type = 2
+special_hp_results = {
+0: 0,
+1: 14,
+2: 22,
+3: 32
+}
+special_guard_results = {
+0: -12,
+1: 10,
+2: 16,
+3: 20
+}
+special_self_guard_penalty = -12
+special_vulnerable_hp_bonus = 4
+ai_attack_bias = 1.1
+ai_defend_bias = 0.95
+ai_evade_bias = 0.95
+ai_special_bias = 1.2
+ai_fast_bias = 0.7
+ai_power_bias = 1.2
+ai_precision_bias = 1.15

@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1"]
+size = Vector2(18, 12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1"]
+albedo_color = Color(0.188235, 0.14902, 0.176471, 1)
+roughness = 0.85
+
+[sub_resource type="BoxMesh" id="BoxMesh_1"]
+size = Vector3(0.5, 2.8, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2"]
+albedo_color = Color(0.270588, 0.168627, 0.160784, 1)
+roughness = 0.75
+
+[sub_resource type="BoxMesh" id="BoxMesh_2"]
+size = Vector3(9.0, 0.3, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3"]
+albedo_color = Color(0.333333, 0.227451, 0.203922, 1)
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 2
+ambient_light_color = Color(0.4, 0.36, 0.45, 1)
+ambient_light_energy = 0.8
+glow_enabled = true
+tonemap_mode = 2
+
+[node name="ShrineArena" type="Node3D"]
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_1")
+surface_material_override/0 = SubResource("StandardMaterial3D_1")
+
+[node name="PlatformTrim" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.15, -3.7)
+mesh = SubResource("BoxMesh_2")
+surface_material_override/0 = SubResource("StandardMaterial3D_3")
+
+[node name="PillarLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-3.8, 1.4, -3.9)
+mesh = SubResource("BoxMesh_1")
+surface_material_override/0 = SubResource("StandardMaterial3D_2")
+
+[node name="PillarRight" type="MeshInstance3D" parent="."]
+position = Vector3(3.8, 1.4, -3.9)
+mesh = SubResource("BoxMesh_1")
+surface_material_override/0 = SubResource("StandardMaterial3D_2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.785398, 0.523599, 0)
+light_color = Color(1, 0.780392, 0.666667, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+position = Vector3(0, 3.2, 1.2)
+light_color = Color(0.682353, 0.466667, 0.886275, 1)
+light_energy = 0.8
+omni_range = 16.0
